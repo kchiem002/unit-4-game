@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Market Share Wars</title>
+    <link type="text/css" rel="stylesheet" href="./assets/css/reset.css">
+    <link type="text/css" rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lekton" rel="stylesheet">
+</head>
+<body>
+    <!-- //transportation: uber, lyft, taxi, public trans
+    //social media: instagram, facebook, twitter
+    //movie subscription: moviepass, sinemia, AMC
+    //consumer electronics: Apple, Samsung,
+    //automotive: Tesla, GM, Toyota, Mercedes, BMW
+    //credit-reporting bureaus: Experian, Equifax, TransUnion
+    //web-browsers: google chrome, firefox, internet explorer, safari, edge, opera
+    //search engines: Google, Yahoo, Bing
+    //e-commerce: Amazon, Alibaba, Walmart, Ebay, Costco
+    //fast food: in n out, macdonalds, wendys, chickfila, taco bell
+    //banking: JP Morgan Chase, Bank of America, Wells Fargo, Citibank
+    //operating system: Microsoft, 
+    //internet service providers: AT&T, Spectrum, Comcast, Verizon -->
+    <div id="title">
+        <h1>Market Share Wars</h1>
+        <h3>{Technology Sector Edition}</h3>
+    </div>
+    <div id="industry-selection">
+        <h2>Select Industry</h2>
+        <button onclick="industryOne()" class="industry">Web Browsers</button>
+        <button onclick="industryTwo()" class="industry" id="industry-2">E-Commerce</button>
+        <button onclick="industryThree()" class="industry" id="industry-3">Consumer Electronics</button>
+        <button onclick="industryFour()" class="industry" id="industry-4">Operating Systems</button>
+        <button onclick="industryFive()" class="industry" id="industry-5">Social Media</button>
+    </div>
+    <div id="select-company">
+    </div>
+    <div id="left-player">
+        <h2>Your Company</h2>
+        <div id="selected-company">
+        </div>
+        <div id="attack-buttons">
+            <button onclick="attackButton()">Increase marketing budget</button>
+            <button onclick="attackButton()">Accelerate growth with a VC</button>
+            <button onclick="attackButton()">Release game changing technology</button>
+        </div>
+    </div>
+    <div id="right-player">
+        <h2>Your Competition</h2>
+        <div id="competitors">
+        </div>
+    </div>
+    <div id="score-count">
+        <h2>Market Share Statistics</h2>
+        <div id="score-box">
+        <p id="your-score-change"></p>
+        <p>Your Market Share: <span id="my-marketshare"></span></p>
+        <p id="competitor-score-change"></p>
+        <p>Your Competitor's Market Share: <span id="competitor-marketshare"></span></p>
+        </div>
+    </div>
+<script type="text/javascript" src="./assets/javascript/app.js"></script>
+</body>
+</html>
