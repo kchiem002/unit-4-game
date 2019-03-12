@@ -36,15 +36,29 @@
         <button onclick="industryFive()" class="industry" id="industry-5">Social Media</button>
     </div>
     <div id="select-company">
+        <p id="message-prompt"></p>
+        <span class="ind-1-company" id="company1-1">
+            <img class="ind-1-company" id="company1-1" src="./assets/images/google-chrome-logo.png" alt="Google Chrome">
+        </span>
+        <span class="ind-1-company" id="company1-2">
+            <img class="ind-1-company" id="company1-2" src="./assets/images/firefox-logo.png" alt="Firefox">
+        </span>
+        <span class="ind-1-company" id="company1-3">
+            <img class="ind-1-company" id="company1-3" src="./assets/images/safari-logo.png" alt="Safari">
+        </span>
+        <span class="ind-1-company" id="company1-4">
+            <img class="ind-1-company" id="company1-4" src="./assets/images/internet-explorer-logo.png" alt="Internet Explorer">
+        </span>
+        <p id="message-prompt"></p>
     </div>
     <div id="left-player">
         <h2>Your Company</h2>
         <div id="selected-company">
         </div>
         <div id="attack-buttons">
-            <button onclick="attackButton()">Increase marketing budget</button>
-            <button onclick="attackButton()">Accelerate growth with a VC</button>
-            <button onclick="attackButton()">Release game changing technology</button>
+            <button onclick="strategyButton()">Increase marketing budget</button>
+            <button onclick="strategyButton()">Accelerate growth with a VC</button>
+            <button onclick="strategyButton()">Release game changing technology</button>
         </div>
     </div>
     <div id="right-player">
@@ -56,9 +70,9 @@
         <h2>Market Share Statistics</h2>
         <div id="score-box">
         <p id="your-score-change"></p>
-        <p>Your Market Share: <span id="my-marketshare"></span></p>
+        <p>Your Market Share: <span id="my-marketshare"></span>%</p>
         <p id="competitor-score-change"></p>
-        <p>Your Competitor's Market Share: <span id="competitor-marketshare"></span></p>
+        <p>Your Competitor's Market Share: <span id="competitor-marketshare"></span>%</p>
         </div>
     </div>
 <script type="text/javascript" src="./assets/javascript/app.js"></script>

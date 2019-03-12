@@ -1,52 +1,149 @@
-//declare variables
+//global variables
 let clickCount = 0;
-let myMS = 50;
-let compMS = 50;
-let myRandomGains = Math.floor(Math.random() * 50)
-let myRandomLosses = Math.floor(Math.random() * 50)
-let compRandomGains = Math.floor(Math.random() * 50)
-let compRandomLosses = Math.floor(Math.random() * 50)
+let myStartingMS = Math.floor(Math.random() * 100)
+let compStartingMS = Math.floor(Math.random() * 100)
 
-//create functions
+//functions
+window.onload = _ => {
+    document.querySelector('#select-company').style.display = 'none'
+    document.querySelector('#left-player').style.display = 'none'
+    document.querySelector('#right-player').style.display = 'none'
+    document.querySelector('#score-count').style.display = 'none'
+}
+
+//show companies when selecting industry, onclick is in HTML
 const industryOne = _ => {
-    document.querySelector('#select-company').innerHTML = '<h2>Select Company</h2><br><img class="company" id="google-chrome" data-num="1" src="./assets/images/google-chrome-logo.png" alt="Google Chrome"><img class="company" id="firefox" data-num="2" src="./assets/images/firefox-logo.png" alt="Firefox"><img class="company" id="safari" data-num="3" src="./assets/images/safari-logo.png" alt="Safari"><img class="company" id="internet-explorer" data-num="4" src="./assets/images/internet-explorer-logo.png" alt="Internet Explorer">'
-}
+    document.querySelector('#select-company').style.display = 'block'
+    document.querySelector('.ind-1-company').style.display = 'inline'
+    document.querySelector('#message-prompt').innerHTML = '<h2>Select Your Company</h2>'
 
-const checkScore = _ => {
-    if (myMS < 0) {
-    myMS = 0
-    console.log("You Lose")
-    }
-    if (myMS >= 100 || compMS <= 0) {
-    myMS = 100
-    console.log("You Win")
-    }
-    if (compMS < 0) {
-    compMS = 0
-    console.log("You Win")
-    }
-    if (compMS >= 100 || myMS <= 0) {
-    compMS = 100
-    console.log("You Lose")
-    }    
 }
+//when strategy button is clicked, onclick is in HTML
 
-const attackButton = _ => {
-    myMS = myMS + myRandomGains - myRandomLosses
-    compMS = compMS + compRandomGains - compRandomLosses
-    myGains = myRandomGains + 0
-    document.querySelector('#your-score-change').innerHTML = 'You gained ' + myRandomGains + "%" + ", but later lost " + myRandomLosses + "%" + " in market share"
-    document.querySelector('#competitor-score-change').innerHTML = 'Your competitor gained ' + compRandomGains + "%" + ", but later lost " + compRandomLosses + "%" + " in market share"
-    document.querySelector('#my-marketshare').innerHTML = myMS + "%"
-    document.querySelector('#competitor-marketshare').innerHTML = compMS + "%"
-}
 
+//function calls:
 document.addEventListener('click', e => {
-    if (e.target.className = "company") {
+//scenario 1: if Google Chrome is chosen as your company
+    if (e.target.className === 'ind-1-company') {
         e.target.style.display = 'none'
-        document.querySelector('#selected-company').innerHTML = e.target
+        clickCount++
+        if (e.target.id === 'company1-1' && clickCount <= 1) {
+            document.querySelector('#left-player').style.display = 'block'
+            document.querySelector('#selected-company').innerHTML = '<img class="ind-1-company" id="company1-1" src="./assets/images/google-chrome-logo.png" alt="Google Chrome">'
+            document.querySelector('#message-prompt').innerHTML = '<h2>Select Your Competitor</h2>'
+        }
+//scenario 2: if Firefox is chosen as your company
+        else if (e.target.id === 'company1-2' && clickCount <= 1) {
+            document.querySelector('#left-player').style.display = 'block'
+            document.querySelector('#selected-company').innerHTML = '<img src="./assets/images/firefox-logo.png" alt="Firefox">'
+            document.querySelector('#message-prompt').innerHTML = '<h2>Select Your Competitor</h2>'
+        }
+
+//scenario 3: if Safari is chosen as your company
+        else if (e.target.id === 'company1-3' && clickCount <= 1) {
+            document.querySelector('#left-player').style.display = 'block'
+            document.querySelector('#selected-company').innerHTML = '<img src="./assets/images/safari-logo.png" alt="Safari">'
+            document.querySelector('#message-prompt').innerHTML = '<h2>Select Your Competitor</h2>'
+        }
+
+//scenario 3: if IE is chosen as your company
+        else if (e.target.id === 'company1-4' && clickCount <= 1) {
+            document.querySelector('#left-player').style.display = 'block'
+            document.querySelector('#selected-company').innerHTML = '<img src="./assets/images/internet-explorer-logo.png" alt="Safari">'
+            document.querySelector('#message-prompt').innerHTML = '<h2>Select Your Competitor</h2>'
+        }
+
+//competitors scenarios
+        else if (e.target.id === 'company1-1' && clickCount > 1) {
+            console.log("else")
+            document.querySelector('#right-player').style.display = "block"
+            document.querySelector('#competitors').innerHTML = '<img class="ind-1-company" id="company1-2" src="./assets/images/google-chrome-logo.png" alt="Google Chrome">'
+            document.querySelector('#score-count').style.display = 'block'
+            document.querySelector('#message-prompt').innerHTML = '<h2>Start Your Strategy!</h2>'
+        }
+        else if (e.target.id === 'company1-2' && clickCount > 1) {
+            console.log("else")
+            document.querySelector('#right-player').style.display = "block"
+            document.querySelector('#competitors').innerHTML = '<img class="ind-1-company" id="company1-2" src="./assets/images/firefox-logo.png" alt="Firefox">'
+            document.querySelector('#score-count').style.display = 'block'
+            document.querySelector('#message-prompt').innerHTML = '<h2>Start Your Strategy!</h2>'
+        }
+        else if (e.target.id === 'company1-3' && clickCount > 1) {
+            console.log("else")
+            document.querySelector('#right-player').style.display = "block"
+            document.querySelector('#competitors').innerHTML = '<img class="ind-1-company" id="company1-3" src="./assets/images/safari-logo.png" alt="Safari">'
+            document.querySelector('#score-count').style.display = 'block'
+            document.querySelector('#message-prompt').innerHTML = '<h2>Start Your Strategy!</h2>'
+        }
+        else if (e.target.id === 'company1-4' && clickCount > 1) {
+            console.log("else")
+            document.querySelector('#right-player').style.display = "block"
+            document.querySelector('#competitors').innerHTML = '<img class="ind-1-company" id="company1-4" src="./assets/images/internet-explorer-logo.png" alt="Internet Explorer">'
+            document.querySelector('#score-count').style.display = 'block'
+            document.querySelector('#message-prompt').innerHTML = '<h2>Start Your Strategy!</h2>'
+        }
     }
+    
 })
+
+document.querySelector('#my-marketshare').innerHTML = myStartingMS
+document.querySelector('#competitor-marketshare').innerHTML = compStartingMS
+
+
+
+//attempt #2
+// //declare variables
+// let clickCount = 0;
+// let myMS = 50;
+// let compMS = 50;
+// let myRandomGains = Math.floor(Math.random() * 50)
+// let myRandomLosses = Math.floor(Math.random() * 50)
+// let compRandomGains = Math.floor(Math.random() * 50)
+// let compRandomLosses = Math.floor(Math.random() * 50)
+
+// //create functions
+// const industryOne = _ => {
+//     document.querySelector('#select-company').innerHTML = '<h2>Select Company</h2><br><img class="company" id="google-chrome" data-num="1" src="./assets/images/google-chrome-logo.png" alt="Google Chrome"><img class="company" id="firefox" data-num="2" src="./assets/images/firefox-logo.png" alt="Firefox"><img class="company" id="safari" data-num="3" src="./assets/images/safari-logo.png" alt="Safari"><img class="company" id="internet-explorer" data-num="4" src="./assets/images/internet-explorer-logo.png" alt="Internet Explorer">'
+// }
+
+// const checkScore = _ => {
+//     if (myMS < 0) {
+//     myMS = 0
+//     console.log("You Lose")
+//     }
+//     if (myMS >= 100 || compMS <= 0) {
+//     myMS = 100
+//     console.log("You Win")
+//     }
+//     if (compMS < 0) {
+//     compMS = 0
+//     console.log("You Win")
+//     }
+//     if (compMS >= 100 || myMS <= 0) {
+//     compMS = 100
+//     console.log("You Lose")
+//     }    
+// }
+
+// const attackButton = _ => {
+//     myMS = myMS + myRandomGains - myRandomLosses
+//     compMS = compMS + compRandomGains - compRandomLosses
+// //not sure how to get gains and losses to update on the HTML with every button push
+//     document.querySelector('#your-score-change').innerHTML = 'You gained ' + myRandomGains + "%" + ", but later lost " + myRandomLosses + "%" + " in market share"
+//     document.querySelector('#competitor-score-change').innerHTML = 'Your competitor gained ' + compRandomGains + "%" + ", but later lost " + compRandomLosses + "%" + " in market share"
+//     document.querySelector('#my-marketshare').innerHTML = myMS + "%"
+//     document.querySelector('#competitor-marketshare').innerHTML = compMS + "%"
+// }
+
+// document.addEventListener('click', e => {
+//     if (e.target.className = "company") {
+//         e.target.style.display = 'none'
+//         document.querySelector('#selected-company').innerHTML = e.target
+//     }
+// })
+
+// document.querySelector('#my-marketshare').textContent = myMS + "%"
+// document.querySelector('#competitor-marketshare').textContent = compMS + "%"
 
 
     //for reference:
@@ -81,8 +178,7 @@ document.addEventListener('click', e => {
 //         }
 // }})
 
-document.querySelector('#my-marketshare').textContent = myMS + "%"
-document.querySelector('#competitor-marketshare').textContent = compMS + "%"
+
 
 
 
