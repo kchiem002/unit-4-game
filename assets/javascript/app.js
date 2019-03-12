@@ -7,6 +7,7 @@ let randomGains1 = Math.floor(Math.random() * 100)
 let randomLosses2 = Math.floor(Math.random() * 100)
 let randomGains2 = Math.floor(Math.random() * 100)
 let isDone = false
+let themeVideo = document.querySelector('#video')
 
 //functions
 window.onload = _ => {
@@ -14,6 +15,7 @@ window.onload = _ => {
     document.querySelector('#left-player').style.display = 'none'
     document.querySelector('#right-player').style.display = 'none'
     document.querySelector('#score-count').style.display = 'none'
+    document.querySelector('#video').style.display = 'none'
 }
 
 //show companies when selecting industry (onclick is in HTML)
@@ -21,6 +23,12 @@ const industryOne = _ => {
     document.querySelector('#select-company').style.display = 'block'
     document.querySelector('.ind-1-company').style.display = 'inline'
     document.querySelector('#message-prompt').innerHTML = '<h2>Select Your Company</h2>'
+    document.querySelector('#video').style.display = 'block'
+    playVideo()
+}
+
+const playVideo = _ => {
+    themeVideo.play()
 }
 
 //when strategy button is clicked (onclick is in HTML)
@@ -32,7 +40,7 @@ const strategyButton = _ => {
         myMS = 0
         compMS = 100
         console.log("You Lose")
-        document.querySelector('#message-prompt').innerHTML = `<h2>You made bad strategic choices and ran your company into the ground<br><a href="https://www.uscourts.gov/service-forms/bankruptcy/bankruptcy-basics/chapter-11-bankruptcy-basics">File for Bankruptcy</a></h2>`
+        document.querySelector('#message-prompt').innerHTML = `<h2>Opps, you made bad strategic choices and ran your company into the ground<br><a href="https://www.uscourts.gov/service-forms/bankruptcy/bankruptcy-basics/chapter-11-bankruptcy-basics">File for Bankruptcy</a></h2>`
         isDone = true
         }
         else if (myMS > 100) {
@@ -53,7 +61,7 @@ const strategyButton = _ => {
         myMS = 0
         compMS = 100
         console.log("You Lose")
-        document.querySelector('#message-prompt').innerHTML = `<h2>Congratulations! You made bad strategic choices and ran your company into the ground<br><a href="https://www.uscourts.gov/service-forms/bankruptcy/bankruptcy-basics/chapter-11-bankruptcy-basics">File for Bankruptcy</a></h2>`
+        document.querySelector('#message-prompt').innerHTML = `<h2>Oops, you made bad strategic choices and ran your company into the ground<br><a href="https://www.uscourts.gov/service-forms/bankruptcy/bankruptcy-basics/chapter-11-bankruptcy-basics">File for Bankruptcy</a></h2>`
         isDone = true
         }    
     }
@@ -128,8 +136,6 @@ document.addEventListener('click', e => {
 
 document.querySelector('#my-marketshare').innerHTML = myMS
 document.querySelector('#competitor-marketshare').innerHTML = compMS
-
-
 
 //attempt #2
 // //declare variables
