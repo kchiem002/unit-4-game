@@ -1,7 +1,12 @@
 //global variables
-let clickCount = 0;
-let myStartingMS = Math.floor(Math.random() * 100)
-let compStartingMS = Math.floor(Math.random() * 100)
+let clickCount = 0
+let myMS = Math.floor(Math.random() * 100)
+let compMS = Math.floor(Math.random() * 100)
+let randomLosses1 = Math.floor(Math.random() * 100)
+let randomGains1 = Math.floor(Math.random() * 100)
+let randomLosses2 = Math.floor(Math.random() * 100)
+let randomGains2 = Math.floor(Math.random() * 100)
+let isDone = false
 
 //functions
 window.onload = _ => {
@@ -11,15 +16,51 @@ window.onload = _ => {
     document.querySelector('#score-count').style.display = 'none'
 }
 
-//show companies when selecting industry, onclick is in HTML
+//show companies when selecting industry (onclick is in HTML)
 const industryOne = _ => {
     document.querySelector('#select-company').style.display = 'block'
     document.querySelector('.ind-1-company').style.display = 'inline'
     document.querySelector('#message-prompt').innerHTML = '<h2>Select Your Company</h2>'
-
 }
-//when strategy button is clicked, onclick is in HTML
 
+//when strategy button is clicked (onclick is in HTML)
+const strategyButton = _ => {
+    myMS = myMS + randomGains1 - randomLosses1
+    compMS = compMS + randomGains2 - randomLosses2
+    const checkScore = _ => {
+        if (myMS < 0) {
+        myMS = 0
+        compMS = 100
+        console.log("You Lose")
+        document.querySelector('#message-prompt').innerHTML = `<h2>You made bad strategic choices and ran your company into the ground<br><a href="https://www.uscourts.gov/service-forms/bankruptcy/bankruptcy-basics/chapter-11-bankruptcy-basics">File for Bankruptcy</a></h2>`
+        isDone = true
+        }
+        else if (myMS > 100) {
+        myMS = 100
+        compMS = 0
+        console.log("You Win")
+        document.querySelector('#message-prompt').innerHTML = "<h2>Congratulations! You Monopolized Your Industry!</h2>"
+        isDone = true
+        }
+        else if (compMS < 0) {
+        myMS = 100
+        compMS = 0
+        console.log("You Win")
+        document.querySelector('#message-prompt').innerHTML = "<h2>Congratulations! You Monopolized Your Industry!</h2>"
+        isDone = true
+        }
+        else if (compMS > 100) {
+        myMS = 0
+        compMS = 100
+        console.log("You Lose")
+        document.querySelector('#message-prompt').innerHTML = `<h2>Congratulations! You made bad strategic choices and ran your company into the ground<br><a href="https://www.uscourts.gov/service-forms/bankruptcy/bankruptcy-basics/chapter-11-bankruptcy-basics">File for Bankruptcy</a></h2>`
+        isDone = true
+        }    
+    }
+    checkScore()
+    document.querySelector('#my-marketshare').innerHTML = myMS
+    document.querySelector('#comp-marketshare').innerHTML = compMS
+}
 
 //function calls:
 document.addEventListener('click', e => {
@@ -55,39 +96,38 @@ document.addEventListener('click', e => {
 
 //competitors scenarios
         else if (e.target.id === 'company1-1' && clickCount > 1) {
-            console.log("else")
             document.querySelector('#right-player').style.display = "block"
             document.querySelector('#competitors').innerHTML = '<img class="ind-1-company" id="company1-2" src="./assets/images/google-chrome-logo.png" alt="Google Chrome">'
             document.querySelector('#score-count').style.display = 'block'
-            document.querySelector('#message-prompt').innerHTML = '<h2>Start Your Strategy!</h2>'
+            document.querySelector('#message-prompt').innerHTML = '<h2>Start Your Growth Strategy!</h2>'
+            document.querySelector('#companies').style.display = 'none'
         }
         else if (e.target.id === 'company1-2' && clickCount > 1) {
-            console.log("else")
             document.querySelector('#right-player').style.display = "block"
             document.querySelector('#competitors').innerHTML = '<img class="ind-1-company" id="company1-2" src="./assets/images/firefox-logo.png" alt="Firefox">'
             document.querySelector('#score-count').style.display = 'block'
-            document.querySelector('#message-prompt').innerHTML = '<h2>Start Your Strategy!</h2>'
+            document.querySelector('#message-prompt').innerHTML = '<h2>Start Your Growth Strategy!</h2>'
+            document.querySelector('#companies').style.display = 'none'
         }
         else if (e.target.id === 'company1-3' && clickCount > 1) {
-            console.log("else")
             document.querySelector('#right-player').style.display = "block"
             document.querySelector('#competitors').innerHTML = '<img class="ind-1-company" id="company1-3" src="./assets/images/safari-logo.png" alt="Safari">'
             document.querySelector('#score-count').style.display = 'block'
-            document.querySelector('#message-prompt').innerHTML = '<h2>Start Your Strategy!</h2>'
+            document.querySelector('#message-prompt').innerHTML = '<h2>Start Your Growth Strategy!</h2>'
+            document.querySelector('#companies').style.display = 'none'
         }
         else if (e.target.id === 'company1-4' && clickCount > 1) {
-            console.log("else")
             document.querySelector('#right-player').style.display = "block"
             document.querySelector('#competitors').innerHTML = '<img class="ind-1-company" id="company1-4" src="./assets/images/internet-explorer-logo.png" alt="Internet Explorer">'
             document.querySelector('#score-count').style.display = 'block'
-            document.querySelector('#message-prompt').innerHTML = '<h2>Start Your Strategy!</h2>'
+            document.querySelector('#message-prompt').innerHTML = '<h2>Start Your Growth Strategy!</h2>'
+            document.querySelector('#companies').style.display = 'none'
         }
     }
-    
 })
 
-document.querySelector('#my-marketshare').innerHTML = myStartingMS
-document.querySelector('#competitor-marketshare').innerHTML = compStartingMS
+document.querySelector('#my-marketshare').innerHTML = myMS
+document.querySelector('#competitor-marketshare').innerHTML = compMS
 
 
 
