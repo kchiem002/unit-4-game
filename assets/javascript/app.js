@@ -2,12 +2,11 @@
 let clickCount = 0
 let myMS = Math.floor(Math.random() * 100)
 let compMS = Math.floor(Math.random() * 100)
-let randomLosses1 = Math.floor(Math.random() * 100)
-let randomGains1 = Math.floor(Math.random() * 100)
-let randomLosses2 = Math.floor(Math.random() * 100)
-let randomGains2 = Math.floor(Math.random() * 100)
+let randomLosses1 = Math.floor(Math.random() * 50)
+let randomGains1 = Math.floor(Math.random() * 50)
+let randomLosses2 = Math.floor(Math.random() * 50)
+let randomGains2 = Math.floor(Math.random() * 50)
 let isDone = false
-let themeVideo = document.querySelector('#video')
 
 //functions
 window.onload = _ => {
@@ -15,7 +14,6 @@ window.onload = _ => {
     document.querySelector('#left-player').style.display = 'none'
     document.querySelector('#right-player').style.display = 'none'
     document.querySelector('#score-count').style.display = 'none'
-    document.querySelector('#video').style.display = 'none'
 }
 
 //show companies when selecting industry (onclick is in HTML)
@@ -23,12 +21,6 @@ const industryOne = _ => {
     document.querySelector('#select-company').style.display = 'block'
     document.querySelector('.ind-1-company').style.display = 'inline'
     document.querySelector('#message-prompt').innerHTML = '<h2>Select Your Company</h2>'
-    document.querySelector('#video').style.display = 'block'
-    playVideo()
-}
-
-const playVideo = _ => {
-    themeVideo.play()
 }
 
 //when strategy button is clicked (onclick is in HTML)
@@ -40,28 +32,28 @@ const strategyButton = _ => {
         myMS = 0
         compMS = 100
         console.log("You Lose")
-        document.querySelector('#message-prompt').innerHTML = `<h2>Opps, you made bad strategic choices and ran your company into the ground<br><a href="https://www.uscourts.gov/service-forms/bankruptcy/bankruptcy-basics/chapter-11-bankruptcy-basics">File for Bankruptcy</a></h2>`
+        document.querySelector('#message-prompt').innerHTML = `<h2>Opps, you made bad strategic choices and ran your company into the ground...<br><a href="https://www.uscourts.gov/services-forms/bankruptcy/bankruptcy-basics/chapter-11-bankruptcy-basics">File for Bankruptcy</a></h2>`
         isDone = true
         }
         else if (myMS > 100) {
         myMS = 100
         compMS = 0
         console.log("You Win")
-        document.querySelector('#message-prompt').innerHTML = "<h2>Congratulations! You Monopolized Your Industry!</h2>"
+        document.querySelector('#message-prompt').innerHTML = "<h2>Congratulations! Welcome to the 3 Comma Club!</h2>"
         isDone = true
         }
         else if (compMS < 0) {
         myMS = 100
         compMS = 0
         console.log("You Win")
-        document.querySelector('#message-prompt').innerHTML = "<h2>Congratulations! You Monopolized Your Industry!</h2>"
+        document.querySelector('#message-prompt').innerHTML = "<h2>Congratulations! Welcome to the 3 Comma Club!</h2>"
         isDone = true
         }
         else if (compMS > 100) {
         myMS = 0
         compMS = 100
         console.log("You Lose")
-        document.querySelector('#message-prompt').innerHTML = `<h2>Oops, you made bad strategic choices and ran your company into the ground<br><a href="https://www.uscourts.gov/service-forms/bankruptcy/bankruptcy-basics/chapter-11-bankruptcy-basics">File for Bankruptcy</a></h2>`
+        document.querySelector('#message-prompt').innerHTML = `<h2>Oops, you made bad strategic choices and ran your company into the ground...<br><a href="https://www.uscourts.gov/services-forms/bankruptcy/bankruptcy-basics/chapter-11-bankruptcy-basics">File for Bankruptcy</a></h2>`
         isDone = true
         }    
     }
